@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Freera.Interfaces/1.0.0": {
+        "runtime": {
+          "Freera.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Freera.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Freera.Exceptions/1.0.0": {
+        "runtime": {
+          "Freera.Exceptions.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Freera.Exceptions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

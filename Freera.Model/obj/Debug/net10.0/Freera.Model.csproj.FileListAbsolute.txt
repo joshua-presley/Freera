@@ -1,0 +1,17 @@
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Model.deps.json
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Model.dll
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Model.pdb
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Exceptions.dll
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Interfaces.dll
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Exceptions.pdb
+C:\Users\Josh\source\repos\Freera\Freera.Model\bin\Debug\net10.0\Freera.Interfaces.pdb
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.csproj.AssemblyReference.cache
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.AssemblyInfoInputs.cache
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.AssemblyInfo.cs
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.csproj.CoreCompileInputs.cache
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.M.A9ACC263.Up2Date
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.dll
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\refint\Freera.Model.dll
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\Freera.Model.pdb
+C:\Users\Josh\source\repos\Freera\Freera.Model\obj\Debug\net10.0\ref\Freera.Model.dll

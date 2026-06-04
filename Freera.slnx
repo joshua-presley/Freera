@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Freera.App/Freera.App.csproj" />
+  <Project Path="Freera.Exceptions/Freera.Exceptions.csproj" />
+  <Project Path="Freera.Interfaces/Freera.Interfaces.csproj" />
+  <Project Path="Freera.Model/Freera.Model.csproj" />
+</Solution>
