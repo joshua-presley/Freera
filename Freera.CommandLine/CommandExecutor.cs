@@ -1,4 +1,5 @@
-﻿using Freera.Exceptions;
+﻿using Freera.CommandLine.Interfaces;
+using Freera.Exceptions;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Freera.CommandLine
@@ -7,17 +8,29 @@ namespace Freera.CommandLine
     /// <summary>
     /// Base implementation for classes which execute user commands.
     /// </summary>
-    public abstract class CommandExecutor
+    public class CommandExecutor: ICommandExecutor
     {
-        public static List<Command> CommandTable { get; set; } = [];
-        public void Execute(string input)
+        public static List<Command> CommandTable { get; set; } = new List<Command>();
+
+        /// <summary>
+        /// Run the specified command with the supplied arguements
+        /// </summary>
+        /// <remarks>
+        /// The first arg should always be the command name. Parameter style args are
+        /// supplied by passing the param name followed by a value.
+        /// Flag style args are passed by adding '-' to the beginning of the parameter name.
+        /// </remarks>
+        /// <param name="args">User supplied args from the command line. Not sanitized at this point.</param>
+        /// <exception cref="EmptyCommandException">If the list of arguments is empty.</exception>
+        /// <exception cref="CommandNotRegisteredException">If the command provided could not be found in the system.</exception>
+        /// <exception cref="ParameterValidationException">If any parameter is passed without a value where one is required.</exception>
+        public void Execute(string[] args)
         {
-            var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            if(input == "" || tokens.Length == 0 )
+            if(args.Length == 0 )
             {
                 throw new EmptyCommandException();
             }
-            var function = tokens[0];
+            var function = args[0];
             var executable = CommandTable.Find(command => command.Name == function);
             if(executable.Equals(null))
             {
@@ -27,24 +40,37 @@ namespace Freera.CommandLine
 
             var parameters = new List<string>();
             var flags = new List<string>();
-            for(int i = 0; i < tokens.Length; i++)
+            for(int i = 1; i < args.Length; i++)
             {
-                if (tokens[i].StartsWith('-'))
+                if (args[i].StartsWith('-'))
                 {
-                    flags.Add(tokens[i]);
+                    flags.Add(args[i]);
                 }
                 else
                 {
-                    if (i == tokens.Length - 1 || tokens[i + 1].StartsWith("-"))
+                    if (i == args.Length - 1 || args[i + 1].StartsWith("-"))
                     {
-                        throw new ParameterValidationException("parameter provided without value.", tokens[i]);
+                        throw new ParameterValidationException("parameter provided without value.", args[i]);
                     }
-                    parameters.Add(tokens[i] + " " +  tokens[i + 1]);
+                    parameters.Add(args[i] + " " +  args[i + 1]);
+                    i++;
                 }
             }
 
-
             executable.Method(parameters, flags);
+        }
+
+        public CommandExecutor()
+        {
+            var command = new Command();
+            command.Name = "testCommand";
+            command.Method = Test;
+            CommandTable.Add(command);
+        }
+
+        private void Test(List<string> parameters, List<string> flags)
+        {
+
         }
     }
 

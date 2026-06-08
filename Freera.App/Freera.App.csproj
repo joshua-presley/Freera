@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Freera.CommandLine.Interfaces\Freera.CommandLine.Interfaces.csproj" />
+    <ProjectReference Include="..\Freera.CommandLine\Freera.CommandLine.Implementation.csproj" />
+  </ItemGroup>
+
 </Project>
