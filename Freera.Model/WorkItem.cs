@@ -43,6 +43,11 @@ namespace Freera.Model
         /// </summary>
         WorkItemState State => _state;
 
+        /// <summary>
+        /// Set the parent on this workItem. 
+        /// </summary>
+        /// <param name="workItem"></param>
+        /// <exception cref="ParameterValidationException"></exception>
         public void SetParent(WorkItem workItem)
         {
             if (this._parent != null)
@@ -52,11 +57,22 @@ namespace Freera.Model
             this._parent = workItem;
         }
 
+        /// <summary>
+        /// Link an existing workitem to this WorkItem as a child
+        /// </summary>
+        /// <param name="child">Existing Work Item to link</param>
+        /// <exception cref="SelfReferenceException">If the child and the parent have the same Id</exception>
+        /// <exception cref="DuplicateChildException">If the child is already added as a child here.</exception>
+        /// <exception cref="NullReferenceException">If the child was null</exception>
         public void AddChild(WorkItem child)
         {
+            if(child == null)
+            {
+                throw new NullReferenceException("Cannot add a null child.");
+            }
             if(child.Id == this.Id)
             {
-                
+                throw new SelfReferenceException();
             }
             this._children.ForEach(existingChild =>
             {
@@ -65,6 +81,8 @@ namespace Freera.Model
                     throw new DuplicateChildException(this.Id, child.Id);
                 }
             });
+            this._children.Add(child);
+            child.SetParent(this);
         }
 
 
