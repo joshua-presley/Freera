@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Freera.Exceptions\Freera.Exceptions.csproj" />
+  </ItemGroup>
+
 </Project>
