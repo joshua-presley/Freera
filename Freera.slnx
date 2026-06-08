@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Freera.App/Freera.App.csproj" />
+  <Project Path="Freera.CommandLine/Freera.CommandLine.csproj" Id="eb571626-f5b6-40f2-a38d-afe71e05478a" />
   <Project Path="Freera.Exceptions/Freera.Exceptions.csproj" />
   <Project Path="Freera.Interfaces/Freera.Interfaces.csproj" />
   <Project Path="Freera.Library.Implementation/Freera.Library.Implementation.csproj" Id="f506f039-f2ca-4ae5-a261-d6363b15627d" />
