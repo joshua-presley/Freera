@@ -62,15 +62,6 @@ namespace Freera.CommandLine
 
         public CommandExecutor()
         {
-            var command = new Command();
-            command.Name = "testCommand";
-            command.Method = Test;
-            CommandTable.Add(command);
-        }
-
-        private void Test(List<string> parameters, List<string> flags)
-        {
-
         }
     }
 
