@@ -1,11 +1,12 @@
 ﻿
-class Program
+using Freera.CommandLine;
+
+
+class Program()
 {
     static void Main(string[] args)
     {
-        foreach (var arg in args)
-        {
-            Console.WriteLine(arg);
-        }
+        var commandExecutor = new CommandExecutor();
+        commandExecutor.Execute(args);
     }
 }

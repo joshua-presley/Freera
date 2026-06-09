@@ -86,12 +86,13 @@ namespace Freera.Model
         }
 
 
-        public WorkItem(string title, string description, int? priority)
+        public WorkItem(string title, string description, int? priority, WorkItemState state)
         {
             this._id = Guid.NewGuid();
             this._title = title;
             this._description = description;
             this._priority = priority;
+            this._state = state;
         }
 
 
@@ -99,8 +100,8 @@ namespace Freera.Model
         private string _title;
         private string _description;
         private int? _priority;
-        private WorkItem _parent;
-        private List<WorkItem> _children;
+        private WorkItem? _parent;
+        private List<WorkItem>? _children;
         private WorkItemState _state;
     }
 }
