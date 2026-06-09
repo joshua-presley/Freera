@@ -7,22 +7,9 @@ namespace Freera.Model
     /// </summary>
     public class WorkItemState
     {
-        public Guid Id => _id;
-        /**
-         *
-         */
-        public int Value => _value;
-        public string Label => _label;
+        public Guid Id { get; set; }
+        public int Value { get; set; }
+        public string Label { get; set; }
 
-        public WorkItemState(Guid id, int value, string label)
-        {
-            _id = id;
-            _value = value;
-            _label = label;
-        }
-
-        private Guid _id;
-        private int _value;
-        private string _label;
     }
 }

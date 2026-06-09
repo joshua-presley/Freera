@@ -5,12 +5,12 @@ namespace Freera.Model
 {
     public class WorkItem : IObjectWithId
     {
-        public Guid Id => _id;
+        public Guid Id { get; set; }
 
         /// <summary>
         ///Title of the work item. User supplied. 
         /// </summary>
-        string Title => _title;
+        string Title { get; set; }
 
         /// <summary>
         /// Description body. Basic user supplied text
@@ -19,29 +19,29 @@ namespace Freera.Model
         /// <remarks>
         /// Probably want to extend styling to this at some point.
         /// </remarks>
-        string Description => _description;
+        string Description { get; set; }
 
         /// <summary>
         /// User supplied priority. Optional.
         /// </summary>
-        int? Priority => _priority;
+        int? Priority  {get;set;}
 
         /// <summary>
         /// Reference to parent object.
         /// </summary>
-        WorkItem Parent => _parent;
+        WorkItem Parent { get; set; }
 
         /// <summary>
         /// List of child items belonging to this Work Item.
         /// There is no limit on the size of the tree. That is,
         /// these children may also be parents of other work items.
         /// </summary>
-        List<WorkItem> Children;
+        List<WorkItem> Children = new();
 
         /// <summary>
         /// State of this Work Item. This is a custom, user defined value.
         /// </summary>
-        WorkItemState State => _state;
+        WorkItemState State { get; set; }
 
         /// <summary>
         /// Set the parent on this workItem. 
@@ -50,11 +50,11 @@ namespace Freera.Model
         /// <exception cref="ParameterValidationException"></exception>
         public void SetParent(WorkItem workItem)
         {
-            if (this._parent != null)
+            if (this.Parent != null)
             {
                 throw new ParameterValidationException("When setting Parent in WorkItem, Parent was already set.", nameof(workItem));
             }
-            this._parent = workItem;
+            this.Parent = workItem;
         }
 
         /// <summary>
@@ -74,34 +74,15 @@ namespace Freera.Model
             {
                 throw new SelfReferenceException();
             }
-            this._children.ForEach(existingChild =>
+            this.Children.ForEach(existingChild =>
             {
                 if (existingChild.Id == child.Id)
                 {
                     throw new DuplicateChildException(this.Id, child.Id);
                 }
             });
-            this._children.Add(child);
+            this.Children.Add(child);
             child.SetParent(this);
         }
-
-
-        public WorkItem(string title, string description, int? priority, WorkItemState state)
-        {
-            this._id = Guid.NewGuid();
-            this._title = title;
-            this._description = description;
-            this._priority = priority;
-            this._state = state;
-        }
-
-
-        private Guid _id;
-        private string _title;
-        private string _description;
-        private int? _priority;
-        private WorkItem? _parent;
-        private List<WorkItem>? _children;
-        private WorkItemState _state;
     }
 }
