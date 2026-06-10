@@ -11,7 +11,11 @@ namespace Freera.Model
         internal FreeraContext context;
         internal DbSet<T> dbSet;
 
-        public Repository(FreeraContext context)
+        public Repository()
+        {
+        }
+
+        public void SetContext(FreeraContext context)
         {
             this.context = context;
             this.dbSet = context.Set<T>();
