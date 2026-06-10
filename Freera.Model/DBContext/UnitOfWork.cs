@@ -17,7 +17,25 @@
             return repo;
         }
 
-        public void Save()
+        /// <summary>
+        /// Open a new transaction and perform work using 
+        /// this context. S
+        /// </summary>
+        /// <param name="action">Custom method for CRUD actions.</param>
+        public void Transaction(Action<UnitOfWork> action)
+        {
+            try
+            {
+                action(this);
+                Save();
+            }
+            catch(Exception e)
+            {
+                //TODO: Implement logger.
+            }
+        }
+
+        private void Save()
         {
             context.SaveChanges();
         }
