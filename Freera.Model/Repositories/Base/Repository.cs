@@ -1,9 +1,6 @@
 ﻿using Freera.Exceptions;
 using Freera.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 namespace Freera.Model
 {
     public abstract class Repository<T> : IRepository<T> where T : class
@@ -15,7 +12,7 @@ namespace Freera.Model
         {
         }
 
-        public void SetContext(FreeraContext context)
+        internal void SetContext(FreeraContext context)
         {
             this.context = context;
             this.dbSet = context.Set<T>();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Freera.Interfaces
 {
-    internal interface IWorkItem
+    public interface IWorkItem
     {
     }
 }

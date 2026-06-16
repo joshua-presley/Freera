@@ -1,20 +1,40 @@
-﻿namespace Freera.Model
+﻿using Freera.Interfaces;
+using Freera.Interfaces.Repositories;
+using Freera.Exceptions;
+
+namespace Freera.Model
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
+        /// <summary>
+        /// Constructor for Unit Of Work.
+        /// </summary>
+        /// <remarks>
+        /// If new repositories are added, they MUST be added here as well.
+        /// </remarks>
+        public UnitOfWork(IWorkItemRepository workItemRepository, IWorkItemStateRepository workItemStateRepository)
+        {
+            this.repositories.Add(workItemRepository);
+            this.repositories.Add(workItemStateRepository);
+        }
+
         /// <summary>
         /// Get a repository by type.
         /// </summary>
         /// <typeparam name="TRepository">Type of the repository object.</typeparam>
         /// <typeparam name="TModel">Type of the model object.</typeparam>
         /// <returns>Instantiated repository with correct context.</returns>
-        public TRepository GetRepository<TRepository, TModel>() 
-            where TRepository : Repository<TModel>
-            where TModel : class
+        public TRepository GetRepository<TRepository>()
+            where TRepository : IRepository
         {
-            TRepository repo = Activator.CreateInstance<TRepository>();
-            repo.SetContext(context);
-            return repo;
+            foreach (var repo in this.repositories)
+            {
+                if (repo is TRepository repository)
+                {
+                    return repository;
+                }
+            }
+            throw new RepositoryNotFoundException(typeof(TRepository));
         }
 
         /// <summary>
@@ -22,7 +42,7 @@
         /// this context. S
         /// </summary>
         /// <param name="action">Custom method for CRUD actions.</param>
-        public void Transaction(Action<UnitOfWork> action)
+        public void Transaction(Action<IUnitOfWork> action)
         {
             try
             {
@@ -59,5 +79,6 @@
 
         private FreeraContext context = new FreeraContext();
         private bool disposed = false;
+        private List<IRepository> repositories = new List<IRepository>();
     }
 }
