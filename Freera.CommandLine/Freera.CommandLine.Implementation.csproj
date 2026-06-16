@@ -9,6 +9,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Freera.CommandLine.Interfaces\Freera.CommandLine.Interfaces.csproj" />
     <ProjectReference Include="..\Freera.Exceptions\Freera.Exceptions.csproj" />
+    <ProjectReference Include="..\Freera.Interfaces\Freera.Interfaces.csproj" />
+    <ProjectReference Include="..\Freera.Library.Implementation\Freera.Library.Implementation.csproj" />
+    <ProjectReference Include="..\Freera.Library.Interfaces\Freera.Library.Interfaces.csproj" />
+    <ProjectReference Include="..\Freera.Model\Freera.Model.csproj" />
   </ItemGroup>
 
 </Project>

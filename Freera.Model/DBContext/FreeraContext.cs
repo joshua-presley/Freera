@@ -2,7 +2,7 @@
 
 namespace Freera.Model
 {
-    public class FreeraContext: DbContext
+    internal class FreeraContext: DbContext
     {
         public DbSet<WorkItem> WorkItems { get; set; }
         public DbSet<WorkItemState> WorkItemStates { get; set; }

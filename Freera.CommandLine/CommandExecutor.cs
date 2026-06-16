@@ -10,7 +10,13 @@ namespace Freera.CommandLine
     /// </summary>
     public class CommandExecutor: ICommandExecutor
     {
-        public static List<Command> CommandTable { get; set; } = new List<Command>();
+        public static void RegisterCommand(string commandName, Action<List<string>, List<string>> method)
+        {
+            var command = new Command();
+            command.Name = commandName;
+            command.Method = method;
+            CommandTable.Add(command);
+        }
 
         /// <summary>
         /// Run the specified command with the supplied arguements
@@ -63,6 +69,8 @@ namespace Freera.CommandLine
         public CommandExecutor()
         {
         }
+
+        private static List<Command> CommandTable { get; set; } = new List<Command>();
     }
 
     /// <summary>
